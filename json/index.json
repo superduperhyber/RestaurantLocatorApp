@@ -1,0 +1,92 @@
+[
+	{
+		"restaurantname":"Vikings",
+		"longitude" : 123.919318,
+		"latitude" : 10.312174,
+		"foodspecialty" : "Nordic Food",
+		"restauranttype" : "Casual Dining",
+		"logo" : "img/vikings.jpg",
+		"rating" : 3,
+		"reviews" : [
+			{
+			"reviewee" : "Jay Hyber",
+			"message" : "Foods here are incredibly delicious!!!"
+			}
+		]
+	},
+	{
+		"restaurantname":"Hukad",
+		"longitude" : 123.906543,
+		"latitude" : 10.318955,
+		"foodspecialty" : "Crispy Pata",
+		"restauranttype" : "Fast Casual",
+		"logo" : "img/hukad.jpg",
+		"rating" : 4,
+		"reviews" : [
+			{
+			"reviewee" : "May",
+			"message" : "All foods in menu are all finger licking good!"
+			}
+		]
+	},
+	{
+		"restaurantname":"Lantaw Busay",
+		"longitude" : 123.873328,
+		"latitude" : 10.370332,
+		"foodspecialty" : "Scallops",
+		"restauranttype" : "Native Restaurant",
+		"logo" : "img/lantaw.jpg",
+		"rating" : 5,
+		"reviews" : [
+			{
+			"reviewee" : "Ash",
+			"message" : "Great Food + Nice View ... Awesome!"
+			}
+		]
+	},
+	{
+		"restaurantname":"Pino Filipino Cuisine",
+		"longitude" : 123.899765,
+		"latitude" : 10.331707,
+		"foodspecialty" : "Crispy Pata",
+		"restauranttype" : "Buffet Style",
+		"logo" : "img/pino.jpg",
+		"rating" : 4,
+		"reviews" : [
+			{
+			"reviewee" : "Misty",
+			"message" : "There's no place like Pino's."
+			}
+		]
+	},
+	{
+		"restaurantname":"Rico's Lechon Restaurant",
+		"longitude" : 123.917358,
+		"latitude" : 10.325458,
+		"foodspecialty" : "Lechon",
+		"restauranttype" : "Buffet Style",
+		"logo" : "img/rico.jpg",
+		"rating" : 3,
+		"reviews" : [
+			{
+			"reviewee" : "Rico Lucena",
+			"message" : "Sarap to the bones!"
+			}
+		]
+	},
+	{
+		"restaurantname":"House of Lechon",
+		"longitude" : 123.901872,
+		"latitude" : 10.317563,
+		"foodspecialty" : "Lechon",
+		"restauranttype" : "Buffet Style",
+		"logo" : "img/houseoflechon.jpg",
+		"rating" : 5,
+		"reviews" : [
+			{
+			"reviewee" : "Rexter",
+			"message" : "Super Yummy Lechon Hmmm..so yummy!"
+			}
+		]
+	}
+]

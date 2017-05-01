@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Exercise</title>
+    <style>
+       #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+	    left: 0px;
+	    top: 0px;
+	    z-index: -1;
+       }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+  </head>
+  <body>
+  	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Restaurant Locator Application</a>
+	    </div>
+	  </div>
+	</nav>
+  <!-- <div class="container"> -->
+	    <div class="panel panel-primary" style="position: absolute;">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Panel</h3>
+		  </div>
+		  <div class="panel-body">
+		    Filter Restaurant by <br/><br/> Rating : &emsp; &emsp; &emsp;
+		    <select id="rating">
+		    	<option>All</option>
+		    	<option>5</option>
+		    	<option>4</option>
+		    	<option>3</option>
+		    	<option>2</option>
+		    	<option>1</option>
+		    </select>
+		    <br/>
+		    <br/>
+		  </div>
+		</div>
+	<!-- </div> -->
+
+	<div id="map"></div>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaab-wEUnGgZzd6KZMHAf6fv0STy5CbgU&libraries=places,visualization&callback=initMap">
+    </script>
+  </body>
+</html>

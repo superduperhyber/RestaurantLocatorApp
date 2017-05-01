@@ -1,0 +1,13 @@
+Application scenario 
+Plot restaurants across any place you like in Cebu. 
+Each restaurant will have at least 1 food specialty.
+A layer panel can filter the restaurant type to show.
+Each restaurant can keep track of the number of customers that visited.
+Customers can get direction to the restaurant from current location.
+Draw a circle or rectangle on the map and and show the number of restaurants within the circle or rectangle.
+Add any value adding feature like analytics to show relationships between patrons, restaurant and revenue.
+It can work even when offline.
+When offline, the layer panel should remain active and all restaurants could still be filtered according to type. The rest of the info need not be there like customer count. Getting directions will not work also. But user interface must stay intact. It must not break. When the disabled feature is invoked, it will prompt that the feature is currently not available.
+
+Due: April 28 Fri 8pm
+Please use Google Maps API. Impress us with kickass user interface. Backend is optional. Use Google Sheets instead.
