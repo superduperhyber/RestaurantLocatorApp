@@ -1,7 +1,6 @@
 var map;
-var directionsService;
-var directionsDisplay;
 var marker;
+var mapsMarker = [];
 
 function initMap() {
 	var centerLoc = {lat: 10.314707, lng: 123.886189};
@@ -9,7 +8,6 @@ function initMap() {
 	  zoom: 12,
 	  center: centerLoc
 	});
-
 	var infoWindow = new google.maps.InfoWindow({map: map});
 
 	navigator.geolocation.watchPosition(function(position) {
@@ -22,22 +20,45 @@ function initMap() {
         infoWindow.setContent('This is your location.');
         map.setCenter(pos);
 
-        var scope = new google.maps.Circle({
-		    center: pos,
-		    radius: 5000,
-		    strokeColor: "#00FF80",
-		    strokeOpacity: 0.8,
-		    strokeWeight: 2,
-		    fillColor: "#E6FFE6",
-		    fillOpacity: 0.4
-		  });
-		  scope.setMap(map);
+    //     var scope = new google.maps.Circle({
+		  //   center: infoWindow.getPosition(),
+		  //   radius: 5000,
+		  //   strokeColor: "#00FF80",
+		  //   strokeOpacity: 0.8,
+		  //   strokeWeight: 2,
+		  //   fillColor: "#E6FFE6",
+		  //   fillOpacity: 0.4
+		  // });
+		  // scope.setMap(map);
+
         marker = new google.maps.Marker({
 		  position: pos,
 		  map: map,
 		});
       });
 
+	putMarkers();
+}
+
+function test(){
+	var selectedRating = document.getElementById('rating').value;
+	//alert(document.getElementById('rating').value);
+	for(var i=0;i<mapsMarker.length;i++){
+		var mrkr = mapsMarker[i];
+
+		if(selectedRating == "All"){
+			mrkr.setVisible(true);
+		}else{
+			if(mrkr.rating == selectedRating){
+				mrkr.setVisible(true);
+			}else{
+				mrkr.setVisible(false);
+			}
+		}
+	}
+}
+
+function putMarkers(){
 	$.getJSON("json/index.json",function(retrnValue){
 		console.log(retrnValue);
 		$.each(retrnValue, function(i, field){
@@ -51,24 +72,21 @@ function initMap() {
           var reviewee = field.reviews[0].reviewee;
           var message = field.reviews[0].message;
 
-            var marker = new google.maps.Marker({
+            var iconMarker = new google.maps.Marker({
 	          position: {lat: latitude, lng: longitude},
 	          map: map,
-	          icon: "img/flag.png"
+	          icon: "img/flag.png",
+	          rating: rating
 	        });
 
+            mapsMarker.push(iconMarker);
+
             var contents  =  '<div id="content">'+
-      '<div id="siteNotice">'+
-      '<button class="btn btn-primary" style="border-radius:10%;" onclick="direction('+latitude+','+longitude+')">Direction</button><br/><br/>' +
+      '<div id="siteNotice" style="float:right;">'+
+      '<button class="btn btn-primary btn-xs" style="border-radius:10%;" onclick="direction('+latitude+','+longitude+')">Direction</button><br/><br/>' +
       '</div>'+
-      '<img src="'+logo+'" style="align:center;height:300px;width:300px;">' +
-      '<h1 id="firstHeading" class="firstHeading">'+restaurantname+'</h1>'+
-      '<div id="bodyContent">'+
-      '<div class="panel panel-success">'+
-		  '<div class="panel-heading">'+
-		    '<h3 class="panel-title">Restaurant Info</h3>'+
-		  '</div>'+
-		  '<div class="panel-body">'+
+      '<img src="'+logo+'" style="align:center;height:100px;width:100px;">'+restaurantname+'' +
+      '<div id="bodyContent">&emsp;&emsp;<h4>Restaurant Info</h4>'+
 		    '<ul class="list-group">'+
 			  '<li class="list-group-item">'+
 			    '<span class="badge">'+foodspecialty+'</span>'+
@@ -83,22 +101,17 @@ function initMap() {
 			    'Rating : '+
 			  '</li>'+
 			'</ul>'+
-		  '</div>'+
-		'</div>'+
-      '<h3>Reviews</h3>'+
-      '<br/>'+
-       '<blockquote>' +
+      '<h5>Reviews</h5>'+
 		  '<h5>'+message+'</h5>' +
-		  '<small><cite title="Source Title">'+reviewee+'</cite></small>' +
-		'</blockquote>' +
+		  '<h6>-'+reviewee+'</h6>' +
       '</div>'+
       '</div>';
 
 	        var infowindow = new google.maps.InfoWindow({
 	          content:contents
 	        });
-	        google.maps.event.addListener(marker, 'click', function() {
-            	infowindow.open(map,marker);
+	        google.maps.event.addListener(iconMarker, 'click', function() {
+            	infowindow.open(map,iconMarker);
         	});
         });
 	});
@@ -120,11 +133,12 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitude,
 	});
 }
 function direction(latitude,longitude){
-	//alert(latitude);
-	//console.log(longitude);
-    //directionDisplay.setMap(null);
-    directionsService = new google.maps.DirectionsService;
-	directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsService = new google.maps.DirectionsService;
+	var directionsDisplay = new google.maps.DirectionsRenderer;
+
+	if (directionsDisplay.getMap()) {
+        directionsDisplay.setMap(null);
+    }
 
     directionsDisplay.setMap(map);
 	calculateAndDisplayRoute(directionsService, directionsDisplay,latitude,longitude);
