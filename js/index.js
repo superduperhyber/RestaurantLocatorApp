@@ -1,6 +1,7 @@
 var map;
 var marker;
 var mapsMarker = [];
+var infoWindow;
 
 function initMap() {
 	var centerLoc = {lat: 10.314707, lng: 123.886189};
@@ -20,16 +21,16 @@ function initMap() {
         infoWindow.setContent('This is your location.');
         map.setCenter(pos);
 
-    //     var scope = new google.maps.Circle({
-		  //   center: infoWindow.getPosition(),
-		  //   radius: 5000,
-		  //   strokeColor: "#00FF80",
-		  //   strokeOpacity: 0.8,
-		  //   strokeWeight: 2,
-		  //   fillColor: "#E6FFE6",
-		  //   fillOpacity: 0.4
-		  // });
-		  // scope.setMap(map);
+        var scope = new google.maps.Circle({
+		    center: infoWindow.getPosition(),
+		    radius: 5000,
+		    strokeColor: "#00FF80",
+		    strokeOpacity: 0.8,
+		    strokeWeight: 2,
+		    fillColor: "#E6FFE6",
+		    fillOpacity: 0.4
+		  });
+		  scope.setMap(map);
 
         marker = new google.maps.Marker({
 		  position: pos,
